@@ -24,6 +24,7 @@ module.exports = function(grunt, options) {
                 omniture:     '../../public/javascripts/vendor/omniture',
                 socketio:     'components/socket.io-client/socket.io',
                 stripe:       '../../public/javascripts/vendor/stripe/stripe.min',
+                svgs:         '../../../common/conf/assets/inline-svgs',
                 // plugins
                 text:         'components/requirejs-text/text'
             },

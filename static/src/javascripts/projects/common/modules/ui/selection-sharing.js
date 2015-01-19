@@ -6,9 +6,11 @@ define([
     'common/utils/client-rects',
     'common/utils/config',
     'common/utils/detect',
+    'common/utils/inline-svgs',
     'common/utils/mediator',
     'common/utils/template',
-    'text!common/views/ui/selection-sharing.html'
+    'text!common/views/ui/selection-sharing.html',
+    'text!svgs/icon/share-twitter.svg'
 ], function (
     bean,
     bonzo,
@@ -17,13 +19,15 @@ define([
     clientRects,
     config,
     detect,
+    inlineSvg,
     mediator,
     template,
-    sharingTemplate
-    ) {
+    sharingTemplate,
+    shareTwitter
+) {
 
     var $body = bonzo(document.body),
-        $selectionSharing = $.create(sharingTemplate),
+        $selectionSharing = $.create(template(sharingTemplate, {iconTwitter: inlineSvg(shareTwitter, 'share-twitter', 'icon')})),
         $twitterAction,
         $emailAction,
         twitterShortUrl = config.page.shortUrl + '/stw',
