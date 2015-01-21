@@ -1,5 +1,6 @@
-/* global _: true */
 define([
+    'underscore',
+    'jquery',
     'modules/vars',
     'modules/authed-ajax',
     'modules/cache',
@@ -10,6 +11,8 @@ define([
     'utils/snap'
 ],
 function (
+    _,
+    $,
     vars,
     authedAjax,
     cache,
