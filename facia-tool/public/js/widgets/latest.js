@@ -72,9 +72,5 @@ define([
         this.subscriptionOnArticles.dispose();
     };
 
-    return {
-        createViewModel: function (params, componentInfo) {
-            return new Latest(params, componentInfo.element);
-        }
-    };
+    return Latest;
 });
