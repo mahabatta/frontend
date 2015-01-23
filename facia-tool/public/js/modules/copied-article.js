@@ -1,8 +1,10 @@
 /* global _: true */
 define([
-    'modules/vars'
+    'modules/vars',
+    'utils/mediator'
 ], function(
-    vars
+    vars,
+    mediator
 ) {
     var storage = window.localStorage,
         storageKeyCopied ='gu.fronts-tool.copied';
@@ -10,6 +12,7 @@ define([
     return {
         flush: function() {
             storage.removeItem(storageKeyCopied);
+            mediator.emit('copied-article:change', false);
         },
 
         set: function(article) {
@@ -22,6 +25,7 @@ define([
                 frontPosition: front ? front.position() : undefined,
                 groupParentId: group.parent ? group.parent.id : undefined
             }));
+            mediator.emit('copied-article:change', true);
         },
 
         get: function(detachFromSource) {
@@ -48,6 +52,15 @@ define([
             }) : undefined;
 
             return obj.article;
+        },
+
+        peek: function() {
+            var obj = storage.getItem(storageKeyCopied),
+                sourceCollection;
+
+            if (obj) {
+                return JSON.parse(obj);
+            }
         }
     };
 });

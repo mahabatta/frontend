@@ -1,5 +1,25 @@
 <div class="col__inner clipboard-container">
-    <div class="title title--clipboard">clipboard</div>
+    <div class="title title--clipboard">
+        <span>clipboard</span>
+        <div class="clipboard-indicator dropdown" data-bind="
+            visible: inCopiedArticle,
+            css: {
+                'dropdown-open': dropdownOpen
+            }
+        ">
+            <a class="paper-button" data-bind="toggleClick: dropdownOpen">
+                <i class="fa fa-clipboard"></i>
+            </a>
+
+            <ul>
+                <li>
+                    <p>You have one article in the clipboard.</p>
+                    <p class="headline" data-bind="text: inCopiedArticle()"></p>
+                    <p>Click on <em>Paste</em> to add it to a collection.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="clipboard" data-bind="with: group">
         <div class="droppable" data-bind="
             makeDropabble: true,
